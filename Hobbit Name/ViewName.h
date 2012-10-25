@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-asdf
+
 @interface ViewName : UIViewController
 @property (retain, nonatomic) IBOutlet UILabel *HobbitName;
 - (IBAction)NewName:(id)sender;

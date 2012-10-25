@@ -9,6 +9,26 @@
 #import "ViewController.h"
 
 @implementation ViewController
+@synthesize banner, bannerIsVisible;
+
+- (void)bannerViewDidLoadAd:(ADBannerView *) abanner {
+    if (!self.bannerIsVisible) {
+        [UIView beginAnimations:@"animatedAdBannerOn" context:NULL];
+        banner.frame = CGRectOffset(banner.frame, 0.0, 50.0);
+        [UIView commitAnimations];
+        self.bannerIsVisible = YES;
+    }
+}
+
+- (void) bannerView:(ADBannerView *) abanner
+didFailToRecieveAdWithError:(NSError *) error{
+    if(!self.bannerIsVisible){
+        [UIView beginAnimations:@"animatedAdBannerOff" context:NULL];
+        banner.frame = CGRectOffset(banner.frame, 0.0, -320.0);
+        [UIView commitAnimations];
+        self.bannerIsVisible = NO;
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -61,4 +81,17 @@
     }
 }
 
+- (IBAction)Start:(id)sender {
+    ChooseGender *screen = [[ChooseGender alloc] initWithNibName:nil bundle:nil];
+    screen.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentModalViewController:screen animated:YES];
+}
+
+- (IBAction)startiPad:(id)sender {
+    ChooseGender *screen = [[ChooseGender alloc] initWithNibName:nil bundle:nil];
+    screen.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentModalViewController:screen animated:YES];
+}
 @end

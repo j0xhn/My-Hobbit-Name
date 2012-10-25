@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    ADBannerView *banner;
+}
+
+@property (nonatomic, assign)BOOL bannerIsVisible;
+@property (nonatomic, retain)IBOutlet ADBannerView *banner;
+
+- (IBAction)Start:(id)sender;
+- (IBAction)startiPad:(id)sender;
 
 @end
